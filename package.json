@@ -1,0 +1,44 @@
+{
+  "name": "froxy",
+  "version": "0.0.1",
+  "description": "A simple, flexible proxy library for Node.js. Create Express-compatible request handler for proxying to arbitrary host with a single call.",
+  "author": "Leonard Wu <leonard.wu92@alumni.ic.ac.uk>",
+  "contributors": [{
+    "name": "Leonard Wu",
+    "email": "leonard.wu92@alumni.ic.ac.uk"
+  }],
+  "main": "lib/froxy.js",
+  "dependencies": {
+    "request": "2.36.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leonardw/froxy.git"
+  },
+  "keywords": [
+    "http",
+    "https",
+    "proxy",
+    "rewrite",
+    "redirect",
+    "url rewrite",
+    "mod_proxy",
+    "mod_rewrite",
+    "virtualhost",
+    "vhost",
+    "express",
+    "server"
+  ],
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/leonardw/froxy/issues"
+  },
+  "homepage": "https://github.com/leonardw/froxy",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": ">= 0.8"
+  }
+}
