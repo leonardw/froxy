@@ -1,6 +1,6 @@
 {
   "name": "froxy",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A simple, flexible proxy library for Node.js. Create Express-compatible request handler for proxying to arbitrary host with a single call.",
   "author": "Leonard Wu <leonard.wu92@alumni.ic.ac.uk>",
   "contributors": [{

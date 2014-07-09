@@ -1,11 +1,17 @@
 # froxy - Flexible Proxy
 
 A simple, flexible proxy library for Node.js.
-Create Express-compatible request handler for proxying to arbitrary host with a single call.
+
+Easily create HTTP request handlers for proxying to arbitrary hosts.
 
 Features:
-* 
-* 
+* Create proxying request handler with a simple config.
+* Express-compatible
+* Created handler reusable in multiple servers or Express routes.
+* Allows setting of origin host, port, protocol
+* Relative URL translation via simple prefix substitution, Regex substitution, or custom JS function
+* Loopback proxying when both host and port are omitted
+
 
 ## Installation
 
@@ -15,16 +21,67 @@ $ npm install froxy
 
 ## Usage
 
-The following is taken from full demo code at [example](https://github.com/leonardw/)
+The following examples are taken from full demo code at [https://github.com/leonardw/froxy-proxy-example](https://github.com/leonardw/froxy-proxy-example)
 
-
+Simple HTTP proxy
 ```js
+var froxy = require('froxy'),
+	http = require("http");
 
+http.createServer(froxy.proxy({
+	host: 'en.wikipedia.org',
+	debug: true
+})).listen(8000);
 ```
+
+Using Express, implementing a multi-origin proxy depending on incoming URL
+```js
+var express = require('express'),
+    froxy = require('froxy'),
+    http = require('http'),
+    routes = require('./routes');
+
+var app = express();
+
+app.set('port', 8000);
+app.use(express.bodyParser());
+app.use(express.methodOverride());
+app.use(app.router);
+
+// All github URLs proxy to github.com/leonardw/
+app.get('/github/*', froxy.proxy({
+    host: 'github.com',
+    translate: ['/github/', '/leonardw/']
+}));
+
+// All other URLs proxy to Wikipedia
+app.get('/*', froxy.proxy({
+    host: 'en.wikipedia.org'
+}));
+
+http.createServer(app).listen(app.get('port'), function(){
+    console.log('Express server listening on port ' + app.get('port'));
+});
+```
+
 
 ## API
 
-#### .proxy()
+#### .proxy(config)
+Creates and returns an HTTP handler that proxies requests to an origin server described by a `config` containing the following properties:
+* `host` (optional) : The origin host to proxy to. If omitted, it's the same as the request host.
+* `port` (optional) : The origin port to proxy to. When this is omitted, but `host` is provided, this defaults to 80; otherwise it's the same as the request port.
+* `protocol` (optional, 'http'|'https') : The protocol to use. If omitted, it's the same as the request protocol.
+* `translate` (optional) : A translation rule for the relative path of URL. This may be a two-element array of the form `[basePath, tranlatePath]`
+or `[regexPattern, translateTemplate]`, or a custom function with of the signature `function(requestUrl, requestSpec, request)` that returns a translated string URL.
+Defaults to no translation.
+* `debug` (optional, true|false) : Set to `true` to log useful debug information to console. Defaults to `false`.
+
+
+Where `translate` is provided as a `function(requestUrl, requestSpec, request)`, the calling parameters are
+* `requestUrl` : The incoming relative request URL as a string.
+* `requestSpec` : The request URL components of the form { host:, port:, protocol:, secure:, url: }.
+* `request` : The request object as provided by Node.
 
 
 ##License
