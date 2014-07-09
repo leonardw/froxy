@@ -5,9 +5,10 @@ A simple, flexible proxy library for Node.js.
 Easily create HTTP request handlers for proxying to arbitrary hosts.
 
 Features:
-* Create proxying request handler with a simple config.
+* Fast, efficient proxy using request and response pipes.
+* Create proxy request handler with a simple config.
 * Express-compatible
-* Created handler reusable in multiple servers or Express routes.
+* Created handler is reusable in multiple servers or Express routes.
 * Allows setting of origin host, port, protocol
 * Relative URL translation via simple prefix substitution, Regex substitution, or custom JS function
 * Loopback proxying when both host and port are omitted
@@ -42,7 +43,6 @@ var express = require('express'),
     routes = require('./routes');
 
 var app = express();
-
 app.set('port', 8000);
 app.use(express.bodyParser());
 app.use(express.methodOverride());
