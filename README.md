@@ -7,7 +7,7 @@ Easily create HTTP request handlers for proxying to arbitrary hosts.
 Features:
 * Fast, efficient proxy using request and response pipes.
 * Create proxy request handler with a simple config.
-* Express-compatible
+* [Express](http://expressjs.com)-compatible
 * Created handler is reusable in multiple servers or Express routes.
 * Allows setting of origin host, port, protocol
 * Relative URL translation via simple prefix substitution, Regex substitution, or custom JS function
@@ -35,32 +35,28 @@ http.createServer(froxy.proxy({
 })).listen(8000);
 ```
 
-Using Express, implementing a multi-origin proxy depending on incoming URL
+Using Express (v4), implementing a multi-origin proxy depending on incoming URL
 ```js
 var express = require('express'),
     froxy = require('froxy'),
-    http = require('http'),
-    routes = require('./routes');
+    http = require('http');
 
 var app = express();
 app.set('port', 8000);
-app.use(express.bodyParser());
-app.use(express.methodOverride());
-app.use(app.router);
 
 // Github URLs proxy to github.com/leonardw/
-app.get('/github/*', froxy.proxy({
+app.route('/github/*').get(froxy.proxy({
     host: 'github.com',
     translate: ['/github/', '/leonardw/']
 }));
 
 // All other URLs proxy to Wikipedia
-app.get('/*', froxy.proxy({
+app.route('/*').get(froxy.proxy({
     host: 'en.wikipedia.org'
 }));
 
 http.createServer(app).listen(app.get('port'), function(){
-    console.log('Express server listening on port ' + app.get('port'));
+    console.log('Express server listening on port', app.get('port'));
 });
 ```
 
