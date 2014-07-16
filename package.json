@@ -1,6 +1,6 @@
 {
   "name": "froxy",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "A simple, flexible proxy library for Node.js. Easily create HTTP request handlers for proxying to arbitrary hosts.",
   "author": "Leonard Wu <leonard.wu92@alumni.ic.ac.uk>",
   "contributors": [{
