@@ -1,12 +1,13 @@
-# froxy - Flexible Proxy
+# froxy - Flexible Proxy and vhost
 
-A simple, flexible proxy library for Node.js.
+A simple, flexible proxy and vhost library for Node.js.
 
 Easily create HTTP request handlers for proxying to arbitrary hosts.
 
 Features:
 * Fast, efficient proxy using request and response pipes.
 * Create proxy request handler with a simple config.
+* Create vhost dispatch handler with a simple config.
 * [Express](http://expressjs.com)-compatible
 * Created handler is reusable in multiple servers or Express routes.
 * Allows setting of origin host, port, protocol
@@ -79,6 +80,8 @@ Where `translate` is provided as a `function(url, urlSpec, request)`, the callin
 * `urlSpec` : The request URL specification of the form `{ host:, port:, protocol:, secure:, url: }`.
 * `request` : The request object as provided by Node.
 
+#### .vhost(config)
+*vhost documentation coming soon...*
 
 ##License
 

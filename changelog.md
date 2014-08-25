@@ -1,5 +1,8 @@
 # Change Log - froxy
 
+### 0.2.0, 2014-08-26
+* New vhost functionality via .vhost()
+
 ### 0.1.0, 2014-07-16
 * Fix variable declaration error in JS caused by typo
 * Update usage example code to Express v4
