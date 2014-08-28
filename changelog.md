@@ -1,5 +1,11 @@
 # Change Log - froxy
 
+### 0.4.0, 2014-08-26
+* Much improved stability
+* Graceful error handling of problematic origin server
+* Support timeout on proxy connections
+* Consistent HTTP error responses
+
 ### 0.2.0, 2014-08-26
 * New vhost functionality via .vhost()
 

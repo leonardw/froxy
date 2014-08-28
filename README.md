@@ -10,7 +10,8 @@ Features:
 * Create vhost dispatch handler with a simple config.
 * [Express](http://expressjs.com)-compatible
 * Created handler is reusable in multiple servers or Express routes.
-* Allows setting of origin host, port, protocol
+* Support setting of origin host, port, protocol
+* Support custom connection timeout setting
 * Relative URL translation via simple prefix substitution, Regex substitution, or custom JS function
 * Loopback proxying when both host and port are omitted
 
@@ -72,6 +73,7 @@ Creates and returns an HTTP handler that proxies requests to an origin server de
 * `translate` (optional) : A translation rule for the relative path of URL. This may be a two-element array of the form `[prefixPath, tranlatePrefixPath]`
 or `[regexPattern, translateTemplate]`, or a custom function with signature `function(url, urlSpec, request)` that returns a translated string URL.
 Defaults to no translation, i.e., same as request URL.
+* `timeout` (optional) : A timeout, in milliseconds, to wait for response from origin host. Default 5 minutes.
 * `debug` (optional, `true|false`) : Set to `true` to log useful debug information to console. Defaults to `false`.
 
 
