@@ -1,6 +1,6 @@
 # Change Log - froxy
 
-### 0.4.0, 2014-08-26
+### 0.4.1, 2014-08-26
 * Much improved stability
 * Graceful error handling of problematic origin server
 * Support timeout on proxy connections
