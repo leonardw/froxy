@@ -83,6 +83,8 @@ Where `translate` is provided as a `function(url, urlSpec, request)`, the callin
 * `request` : The request object as provided by Node.
 
 #### .vhost(config)
+#### .vhost().map(config)
+#### .vhost().dispatcher
 *vhost documentation coming soon...*
 
 ##License

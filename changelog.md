@@ -1,5 +1,8 @@
 # Change Log - froxy
 
+### 0.5.0, 2014-09-01
+* Redesigned vhost API, allowing vhost mapping to be changed on-the-fly.
+
 ### 0.4.1, 2014-08-26
 * Much improved stability
 * Graceful error handling of problematic origin server
