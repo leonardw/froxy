@@ -1,5 +1,9 @@
 # Change Log - froxy
 
+### 0.5.1, 2014-09-05
+* New proxy option 'access' to limit incoming protocol access to plain, secure or any
+* vhost map() renamed to reset() to avoid confusion with ECMAScript-5 map function
+
 ### 0.5.0, 2014-09-01
 * Redesigned vhost API, allowing vhost mapping to be changed on-the-fly.
 

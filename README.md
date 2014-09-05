@@ -74,6 +74,8 @@ Creates and returns an HTTP handler that proxies requests to an origin server de
 or `[regexPattern, translateTemplate]`, or a custom function with signature `function(url, urlSpec, request)` that returns a translated string URL.
 Defaults to no translation, i.e., same as request URL.
 * `timeout` (optional) : A timeout, in milliseconds, to wait for response from origin host. Default 5 minutes.
+* `access` (optional, `'plain'|'secure'|'any'`) : Limit incoming request access to `plain` or `secure` protocol only. Defaults to `any`.
+A redirect (302) to HTTPS response is sent if this is set to `secure` but incoming protocol is HTTP.
 * `debug` (optional, `true|false`) : Set to `true` to log useful debug information to console. Defaults to `false`.
 
 
@@ -83,7 +85,7 @@ Where `translate` is provided as a `function(url, urlSpec, request)`, the callin
 * `request` : The request object as provided by Node.
 
 #### .vhost(config)
-#### .vhost().map(config)
+#### .vhost().reset(config)
 #### .vhost().dispatcher
 *vhost documentation coming soon...*
 
