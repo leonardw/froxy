@@ -1,5 +1,9 @@
 # Change Log - froxy
 
+### 0.5.2, 2014-09-05
+* Fix infinite redirect loop when auto redirecting browser to HTTPS but an intermediate proxy has modified protocol.
+* Handle x-forwarded-... headers introduced by intermediate proxy
+
 ### 0.5.1, 2014-09-05
 * New proxy option 'access' to limit incoming protocol access to plain, secure or any
 * vhost map() renamed to reset() to avoid confusion with ECMAScript-5 map function
