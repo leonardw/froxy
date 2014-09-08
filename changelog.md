@@ -1,6 +1,6 @@
 # Change Log - froxy
 
-### 0.5.2, 2014-09-05
+### 0.5.2, 2014-09-09
 * Fix infinite redirect loop when auto redirecting browser to HTTPS but an intermediate proxy has modified protocol.
 * Handle x-forwarded-... headers introduced by intermediate proxy
 
